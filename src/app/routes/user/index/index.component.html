@@ -1,0 +1,63 @@
+<page-header></page-header>
+
+<div class="index">
+  <div fxLayout class="index__header" fxLayoutAlign="start center">
+    <form fxLayout [style.fontSize.px]="12" fxLayoutGap="16px" fxLayoutAlign="start center">
+      <mat-form-field appearance="outline">
+        <mat-label>搜索</mat-label>
+        <input matInput />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>搜索</mat-label>
+        <input matInput />
+      </mat-form-field>
+    </form>
+    <span fxFlex></span>
+    <div fxLayout fxLayoutGap="16px">
+      <button mat-raised-button color="primary">查询</button>
+      <button mat-raised-button color="primary" [routerLink]="['/article/create', { a: '2' }]">
+        新增
+      </button>
+    </div>
+  </div>
+
+  <div class="mat-elevation-z8 index__content">
+    <mtx-loader [loading]="false">
+      <table mat-table [dataSource]="dataSource">
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef>昵称</th>
+          <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="avatar">
+          <th mat-header-cell *matHeaderCellDef>头像</th>
+          <td mat-cell *matCellDef="let element">{{ element.avatar }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="createdAt">
+          <th mat-header-cell *matHeaderCellDef>createdAt</th>
+          <td mat-cell *matCellDef="let element">{{ element.createdAt }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="updatedAt">
+          <th mat-header-cell *matHeaderCellDef>updatedAt</th>
+          <td mat-cell *matCellDef="let element">{{ element.updatedAt }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="status">
+          <th mat-header-cell *matHeaderCellDef>status</th>
+          <td mat-cell *matCellDef="let element">{{ element.status }}</td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
+      <mat-paginator
+        [pageIndex]="pageIndex"
+        [pageSize]="pageSize"
+        [length]="length"
+        (page)="pageChange($event)"
+      ></mat-paginator>
+    </mtx-loader>
+  </div>
+</div>

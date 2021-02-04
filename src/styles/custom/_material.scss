@@ -1,0 +1,40 @@
+// Material components style fix
+
+.mat-card {
+  margin-bottom: $gutter;
+}
+
+.mat-accordion {
+  display: block;
+  margin-bottom: $gutter;
+}
+
+.mat-list-base {
+  position: relative;
+}
+
+.form-field-full {
+  .mat-form-field {
+    width: 100%;
+  }
+}
+
+// 表格默认宽度拉满
+table {
+  width: 100%;
+}
+// snack-bar 样式
+.app-snack-bar {
+  &--success {
+    background-color: map-get($map: $mat-green, $key: 500);
+    color: #ffffff;
+  }
+  &--warning {
+    background-color: map-get($map: $mat-amber, $key: 700);
+    color: #ffffff;
+  }
+  &--error {
+    background-color: map-get($map: $mat-red, $key: A700);
+    color: #ffffff;
+  }
+}

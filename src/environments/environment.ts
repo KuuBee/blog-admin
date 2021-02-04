@@ -3,7 +3,11 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  SERVER_ORIGIN: '/api/admin/blog',
+  // http://localhost:3001
+  production: false,
+  useHash: false,
+  hmr: false,
 };
 
 /*
