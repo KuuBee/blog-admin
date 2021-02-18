@@ -38,3 +38,7 @@ table {
     color: #ffffff;
   }
 }
+// 设置默认表单宽度拉满
+mat-form-field {
+  width: 100%;
+}

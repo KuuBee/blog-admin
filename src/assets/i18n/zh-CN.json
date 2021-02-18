@@ -75,8 +75,15 @@
     "menu-level.level-1-1.level-2-1.level-3-1.level-4-1": "层级 4.1",
     "article": "文章",
     "article.index": "文章列表",
+    "article.create": "创建文章",
     "user": "用户",
-    "user.index": "用户列表"
+    "user.index": "用户列表",
+    "tag": "标签",
+    "tag.index": "标签列表",
+    "tag.create": "新建标签",
+    "classification": "分类",
+    "classification.index": "分类列表",
+    "classification.create": "新建分类"
   },
   "validations": {
     "required": "该字段必填",

@@ -13,6 +13,7 @@ export class RegisterComponent implements OnInit {
       username: ['', [Validators.required]],
       password: ['', [Validators.required]],
       confirmPassword: ['', [this.confirmValidator]],
+      vipCode: ['', [Validators.required]],
     });
   }
 
@@ -26,4 +27,7 @@ export class RegisterComponent implements OnInit {
     }
     return {};
   };
+  register() {
+    console.log(this.registerForm.value);
+  }
 }

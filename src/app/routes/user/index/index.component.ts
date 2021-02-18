@@ -19,7 +19,6 @@ export class UserIndexComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {}
   ngAfterViewInit() {
-    // this.dataSource.paginator = this.paginator;
     this.requireUserIndex();
   }
   requireUserIndex() {
@@ -34,8 +33,6 @@ export class UserIndexComponent implements OnInit, AfterViewInit {
         if (!this.length) {
           this.length = res.data.pagination.total;
         }
-        // console.log('this.length', this.dataSource.paginator.length);
-        // console.log('this.length', this.dataSource.paginator.pageSize);
       });
   }
   pageChange(e: PageEvent) {

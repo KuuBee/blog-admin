@@ -1,0 +1,19 @@
+<div mat-dialog-title>创建分类</div>
+<div matDialogContent>
+  <form [formGroup]="classificationForm">
+    <p>
+      <mat-form-field>
+        <mat-label>分类名称</mat-label>
+        <input matInput cdkFocusInitial formControlName="name" />
+        <mat-error>此项必填</mat-error>
+      </mat-form-field>
+    </p>
+    <p><mat-slide-toggle formControlName="status">是否开启该分类</mat-slide-toggle></p>
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button mat-raised-button mat-dialog-close>关闭</button>
+  <button mat-raised-button [disabled]="classificationForm.invalid" color="primary" (click)="submit()">
+    提交
+  </button>
+</div>

@@ -4,6 +4,7 @@ import { NoopInterceptor } from './noop-interceptor';
 import { DefaultInterceptor } from './default-interceptor';
 import { LoggingInterceptor } from './logging-interceptor';
 import { SnackBarInterceptor } from './snack-bar.interceptor';
+import { FormDataInterceptor } from './form-data.interceptor';
 
 /** Http interceptor providers in outside-in order */
 export const httpInterceptorProviders = [
@@ -11,4 +12,5 @@ export const httpInterceptorProviders = [
   { provide: HTTP_INTERCEPTORS, useClass: NoopInterceptor, multi: true },
   { provide: HTTP_INTERCEPTORS, useClass: DefaultInterceptor, multi: true },
   { provide: HTTP_INTERCEPTORS, useClass: LoggingInterceptor, multi: true },
+  { provide: HTTP_INTERCEPTORS, useClass: FormDataInterceptor, multi: true },
 ];

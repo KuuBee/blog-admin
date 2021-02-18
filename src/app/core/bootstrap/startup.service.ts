@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { throwError } from 'rxjs';
+import { combineLatest, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
 import { MenuService } from './menu.service';
 import { SettingsService } from './settings.service';
 import { AssetsApiService, AssetsApiType } from '@core/api/assets-api.service';
+import { SearchListService } from '@shared/services/search-list.service';
 
 @Injectable({
   providedIn: 'root',
@@ -15,13 +16,12 @@ export class StartupService {
     private menu: MenuService,
     private http: HttpClient,
     private settings: SettingsService,
-    private _assetsApiService: AssetsApiService
+    private _searchList: SearchListService
   ) {}
 
   load(): Promise<any> {
     return new Promise((resolve, reject) => {
-      this.http
-        .get('./assets/data/menu.json')
+      combineLatest([this.http.get<any>('./assets/data/menu.json'), this._searchList.init()])
         // .getMenu()
         .pipe(
           catchError(res => {
@@ -30,9 +30,11 @@ export class StartupService {
           })
         )
         .subscribe(
-          (res: any) => {
-            this.menu.recursMenuForTranslation(res.menu, 'menu');
-            this.menu.set(res.menu);
+          res => {
+            const [menuRes] = res;
+
+            this.menu.recursMenuForTranslation(menuRes.menu, 'menu');
+            this.menu.set(menuRes.menu);
 
             // Refresh user info
             // In a real app, user data will be fetched from API
@@ -42,6 +44,7 @@ export class StartupService {
               email: 'nzb329@163.com',
               avatar: './assets/images/avatar.jpg',
             });
+            // resolve(null);
           },
           () => reject(),
           () => resolve(null)

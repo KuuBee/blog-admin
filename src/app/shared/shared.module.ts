@@ -24,6 +24,7 @@ import { DisableControlDirective } from './directives/disable-control.directive'
 import { SafeUrlPipe } from './pipes/safe-url.pipe';
 import { ToObservablePipe } from './pipes/to-observable.pipe';
 import { SnackBarRefComponent } from './components/snack-bar-ref/snack-bar-ref.component';
+import { MaterialFileInputModule } from 'ngx-material-file-input';
 
 const MODULES = [
   MaterialModule,
@@ -37,6 +38,7 @@ const MODULES = [
   FormlyMaterialModule,
   ToastrModule,
   TranslateModule,
+  MaterialFileInputModule,
 ];
 const COMPONENTS = [
   BreadcrumbComponent,

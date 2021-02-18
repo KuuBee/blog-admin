@@ -20,6 +20,37 @@
           "route": "index",
           "name": "index",
           "type": "link"
+        },
+        {
+          "route": "create",
+          "name": "create",
+          "type": "link"
+        }
+      ]
+    },
+    {
+      "route": "tag",
+      "name": "tag",
+      "type": "sub",
+      "icon": "bookmark",
+      "children": [
+        {
+          "route": "index",
+          "name": "index",
+          "type": "link"
+        }
+      ]
+    },
+    {
+      "route": "classification",
+      "name": "classification",
+      "type": "sub",
+      "icon": "view_list",
+      "children": [
+        {
+          "route": "index",
+          "name": "index",
+          "type": "link"
         }
       ]
     },
@@ -32,29 +63,6 @@
         {
           "route": "index",
           "name": "index",
-          "type": "link"
-        }
-      ]
-    },
-    {
-      "route": "sessions",
-      "name": "sessions",
-      "type": "sub",
-      "icon": "question_answer",
-      "children": [
-        {
-          "route": "403",
-          "name": "403",
-          "type": "link"
-        },
-        {
-          "route": "404",
-          "name": "404",
-          "type": "link"
-        },
-        {
-          "route": "500",
-          "name": "500",
           "type": "link"
         }
       ]

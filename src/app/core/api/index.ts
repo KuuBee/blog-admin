@@ -2,8 +2,8 @@
  * @Descripttion: type
  * @Author: 杨湛杰
  * @Date: 2021-02-02 16:44:37
- * @LastEditors: 杨湛杰
- * @LastEditTime: 2021-02-02 16:44:38
+ * @LastEditors: KuuBee
+ * @LastEditTime: 2021-02-05 11:25:22
  */
 import { HttpErrorResponse } from '@angular/common/http';
 
@@ -27,7 +27,7 @@ export namespace ApiType {
     pageSize: string | number;
   }
   export interface PaginationResponse<T> {
-    data: T;
+    data: T[];
     pagination: Pagination;
   }
   export interface Pagination {
@@ -37,4 +37,10 @@ export namespace ApiType {
     total: number;
     totalPages: number;
   }
+}
+export class ApiBase {
+  constructor(baseUrl: string) {
+    this._baseUrl = baseUrl;
+  }
+  protected _baseUrl: string;
 }

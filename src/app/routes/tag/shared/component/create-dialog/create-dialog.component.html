@@ -1,0 +1,19 @@
+<div mat-dialog-title>创建标签</div>
+<div matDialogContent>
+  <form [formGroup]="tagForm">
+    <p>
+      <mat-form-field>
+        <mat-label>标签名称</mat-label>
+        <input matInput cdkFocusInitial formControlName="name" />
+        <mat-error>此项必填</mat-error>
+      </mat-form-field>
+    </p>
+    <p><mat-slide-toggle formControlName="status">是否开启该标签</mat-slide-toggle></p>
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button mat-raised-button mat-dialog-close>关闭</button>
+  <button mat-raised-button [disabled]="tagForm.invalid" color="primary" (click)="submit()">
+    提交
+  </button>
+</div>

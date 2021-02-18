@@ -5,7 +5,7 @@
     <form class="form-field-full" [formGroup]="loginForm">
       <mat-form-field appearance="outline">
         <mat-label>{{ 'login.username' | translate }}</mat-label>
-        <input matInput placeholder="ng-matero" formControlName="username" required />
+        <input matInput placeholder="你猜呢" formControlName="username" required />
         <mat-error *ngIf="username.invalid">
           {{ 'login.please_enter' | translate }}
         </mat-error>
@@ -15,7 +15,7 @@
         <mat-label>{{ 'login.password' | translate }}</mat-label>
         <input
           matInput
-          placeholder="ng-matero"
+          placeholder="我不告诉你"
           type="password"
           formControlName="password"
           required
@@ -39,9 +39,10 @@
         {{ 'login.login' | translate }}
       </button>
 
-      <!-- <div class="m-t-16">{{'login.have_no_account' | translate}}?
-        <a routerLink="/auth/register">{{'login.create_one' | translate}}</a>
-      </div> -->
+      <div class="m-t-16">
+        {{ 'login.have_no_account' | translate }}?
+        <a routerLink="/auth/register">{{ 'login.create_one' | translate }}</a>
+      </div>
     </form>
   </mat-card>
 </div>

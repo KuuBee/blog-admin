@@ -32,6 +32,8 @@ const routes: Routes = [
         loadChildren: () => import('./article/article.module').then(m => m.ArticleModule),
       },
   { path: 'user', loadChildren: () => import('./user/user.module').then(m => m.UserModule) },
+  { path: 'tag', loadChildren: () => import('./tag/tag.module').then(m => m.TagModule) },
+  { path: 'classification', loadChildren: () => import('./classification/classification.module').then(m => m.ClassificationModule) },
     ],
   },
   {

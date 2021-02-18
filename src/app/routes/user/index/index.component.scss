@@ -1,9 +1,13 @@
+@import "~@angular/material/theming";
 .index {
   &__header {
-    padding-bottom: 16px;
+    // padding-bottom: 16px;
+    &:hover {
+      @include mat-elevation(5);
+    }
   }
   &__content {
-    border-radius: 5px;
-    overflow: hidden;
+    // border-radius: 5px;
+    // overflow: hidden;
   }
 }

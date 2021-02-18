@@ -24,3 +24,31 @@ if (environment.hmr) {
 } else {
   bootstrap().catch(err => console.log(err));
 }
+/*
+
+
+    {
+      "route": "sessions",
+      "name": "sessions",
+      "type": "sub",
+      "icon": "question_answer",
+      "children": [
+        {
+          "route": "403",
+          "name": "403",
+          "type": "link"
+        },
+        {
+          "route": "404",
+          "name": "404",
+          "type": "link"
+        },
+        {
+          "route": "500",
+          "name": "500",
+          "type": "link"
+        }
+      ]
+    }
+
+*/

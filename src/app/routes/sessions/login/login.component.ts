@@ -3,6 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { SettingsService, StartupService, TokenService } from '@core';
 import { AuthApiService } from '@core/api/auth-api.service';
+import { environment } from '@env/environment';
+import * as bcrypt from 'bcryptjs';
 
 @Component({
   selector: 'app-login',
@@ -20,8 +22,8 @@ export class LoginComponent implements OnInit {
     private _authApi: AuthApiService
   ) {
     this.loginForm = this.fb.group({
-      username: ['', [Validators.required]],
-      password: ['', [Validators.required]],
+      username: [environment.production ? '' : 'test', [Validators.required]],
+      password: [environment.production ? '' : '123456', [Validators.required]],
     });
   }
 
@@ -35,7 +37,7 @@ export class LoginComponent implements OnInit {
     return this.loginForm.get('password');
   }
 
-  login() {
+  async login() {
     this._authApi
       .create({
         password: this.password.value,
