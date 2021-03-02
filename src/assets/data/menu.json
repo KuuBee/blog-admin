@@ -66,6 +66,19 @@
           "type": "link"
         }
       ]
+    },
+    {
+      "route": "friend-link",
+      "name": "friend-link",
+      "type": "sub",
+      "icon": "link",
+      "children": [
+        {
+          "route": "index",
+          "name": "index",
+          "type": "link"
+        }
+      ]
     }
   ]
 }

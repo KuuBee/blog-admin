@@ -5,10 +5,10 @@
  * @LastEditors: KuuBee
  * @LastEditTime: 2021-02-05 11:25:22
  */
-import { HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 
 export namespace ApiType {
-  export interface SuccessResponse<T = any> {
+  export interface SuccessResponse<T = null> {
     statusCode: number;
     message: string;
     data: T;
@@ -36,6 +36,7 @@ export namespace ApiType {
     perPage: number;
     total: number;
     totalPages: number;
+    isLast: boolean;
   }
 }
 export class ApiBase {

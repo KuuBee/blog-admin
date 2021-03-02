@@ -31,9 +31,18 @@ const routes: Routes = [
         path: 'article',
         loadChildren: () => import('./article/article.module').then(m => m.ArticleModule),
       },
-  { path: 'user', loadChildren: () => import('./user/user.module').then(m => m.UserModule) },
-  { path: 'tag', loadChildren: () => import('./tag/tag.module').then(m => m.TagModule) },
-  { path: 'classification', loadChildren: () => import('./classification/classification.module').then(m => m.ClassificationModule) },
+      { path: 'user', loadChildren: () => import('./user/user.module').then(m => m.UserModule) },
+      { path: 'tag', loadChildren: () => import('./tag/tag.module').then(m => m.TagModule) },
+      {
+        path: 'classification',
+        loadChildren: () =>
+          import('./classification/classification.module').then(m => m.ClassificationModule),
+      },
+      {
+        path: 'friend-link',
+        loadChildren: () =>
+          import('./friend-link/friend-link.module').then(m => m.FriendLinkModule),
+      },
     ],
   },
   {

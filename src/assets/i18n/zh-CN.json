@@ -83,7 +83,9 @@
     "tag.create": "新建标签",
     "classification": "分类",
     "classification.index": "分类列表",
-    "classification.create": "新建分类"
+    "classification.create": "新建分类",
+    "friend-link": "友链",
+    "friend-link.index": "友链列表"
   },
   "validations": {
     "required": "该字段必填",
