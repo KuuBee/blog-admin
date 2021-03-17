@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { SettingsService, StartupService, TokenService } from '@core';
 import { AuthApiService } from '@core/api/auth-api.service';
+import { TokenApiService, TokenApiType } from '@core/api/token-api.service';
 import { environment } from '@env/environment';
 import * as bcrypt from 'bcryptjs';
 
@@ -19,10 +20,10 @@ export class LoginComponent implements OnInit {
     private token: TokenService,
     private startup: StartupService,
     private settings: SettingsService,
-    private _authApi: AuthApiService
+    private _tokenApi: TokenApiService
   ) {
     this.loginForm = this.fb.group({
-      username: [environment.production ? '' : 'test', [Validators.required]],
+      username: [environment.production ? '' : 'kuubee', [Validators.required]],
       password: [environment.production ? '' : '123456', [Validators.required]],
     });
   }
@@ -38,14 +39,14 @@ export class LoginComponent implements OnInit {
   }
 
   async login() {
-    this._authApi
+    this._tokenApi
       .create({
         password: this.password.value,
         name: this.username.value,
       })
       .subscribe(res => {
         console.log(res);
-        const { userId, name, avatar, accessToken } = res.data;
+        const { userId, name, avatar, accessToken, email } = res.data;
         // Set user info
         this.settings.setUser({
           id: userId,
@@ -54,6 +55,12 @@ export class LoginComponent implements OnInit {
         });
         // Set token info
         this.token.set({ token: accessToken, userId, name });
+        this.settings.setUser({
+          id: userId,
+          name,
+          email,
+          avatar,
+        });
         // Regain the initial data
         this.startup.load().then(() => {
           let url = this.token.referrer!.url || '/';

@@ -1,0 +1,94 @@
+<page-header></page-header>
+
+<div class="reply-index">
+  <mat-card>
+    <mat-card-content fxLayout fxLayoutAlign="start start">
+      <form fxLayout [style.fontSize.px]="12" fxLayoutGap="16px" fxLayoutAlign="start center">
+        <mat-form-field appearance="outline">
+          <mat-label>搜索</mat-label>
+          <input matInput />
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>搜索</mat-label>
+          <input matInput />
+        </mat-form-field>
+      </form>
+      <span fxFlex></span>
+      <div fxLayout fxLayoutGap="16px">
+        <button mat-raised-button color="primary">查询</button>
+      </div>
+    </mat-card-content>
+  </mat-card>
+  <mat-card>
+    <mtx-loader [loading]="loading">
+      <table class="" multiTemplateDataRows mat-table [dataSource]="dataSource">
+        <ng-container matColumnDef="browser">
+          <th mat-header-cell *matHeaderCellDef>browser</th>
+          <td mat-cell *matCellDef="let element">{{ element.browser }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="createdAt">
+          <th mat-header-cell *matHeaderCellDef>创建日期</th>
+          <td mat-cell *matCellDef="let element">{{ element.createdAt }}</td>
+        </ng-container>
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef>用户名</th>
+          <td mat-cell *matCellDef="let element">
+            <p>{{ element.name }}</p>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="os">
+          <th mat-header-cell *matHeaderCellDef>os</th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.os }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="status">
+          <th mat-header-cell *matHeaderCellDef>状态</th>
+          <td mat-cell *matCellDef="let element">
+            <ng-container [ngSwitch]="element.status">
+              <span *ngSwitchCase="'enable'">已启用</span>
+              <span *ngSwitchCase="'disable'">已禁用</span>
+              <span *ngSwitchCase="'under_review'">待审核</span>
+              <span *ngSwitchDefault>未知状态</span>
+            </ng-container>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="action">
+          <th mat-header-cell *matHeaderCellDef>操作</th>
+          <td mat-cell *matCellDef="let element">
+            <button
+              *ngIf="element.status === 'under_review'"
+              mat-stroked-button
+              color="primary"
+              (click)="approved(element)"
+            >
+              通过审核
+            </button>
+            <mat-slide-toggle
+              *ngIf="element.status !== 'under_review'"
+              [checked]="element.status === 'enable'"
+              (change)="slideChange($event, element)"
+            >
+            </mat-slide-toggle>
+          </td>
+        </ng-container>
+        <ng-container matColumnDef="expandedDetail">
+          <td mat-cell *matCellDef="let element" [attr.colspan]="displayedColumns.length">
+            <mat-card-content class="reply">
+              {{ element.content }}
+            </mat-card-content>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row class="main-row" *matRowDef="let row; columns: displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: ['expandedDetail']"></tr>
+      </table>
+      <mat-paginator [length]="length" (page)="pageChange($event)"></mat-paginator>
+    </mtx-loader>
+  </mat-card>
+</div>

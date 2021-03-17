@@ -41,8 +41,5 @@ export class PageHeaderComponent implements OnInit {
     const routes = this.router.url.slice(1).split('/');
     this.nav = this.menu.getMenuLevel(routes);
     this.nav.unshift('home');
-    console.log(this.menu.getMenuLevel(routes));
-
-    console.log(this.nav);
   }
 }

@@ -43,6 +43,8 @@ const routes: Routes = [
         loadChildren: () =>
           import('./friend-link/friend-link.module').then(m => m.FriendLinkModule),
       },
+  { path: 'comment', loadChildren: () => import('./comment/comment.module').then(m => m.CommentModule) },
+  { path: 'reply', loadChildren: () => import('./reply/reply.module').then(m => m.ReplyModule) },
     ],
   },
   {

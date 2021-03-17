@@ -31,7 +31,9 @@
 
         <ng-container matColumnDef="avatar">
           <th mat-header-cell *matHeaderCellDef>头像</th>
-          <td mat-cell *matCellDef="let element">{{ element.avatar }}</td>
+          <td mat-cell *matCellDef="let element">
+            <img style="width: 100px;" [src]="element.avatar" alt="我裂开了" />
+          </td>
         </ng-container>
 
         <ng-container matColumnDef="createdAt">

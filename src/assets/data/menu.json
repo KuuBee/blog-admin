@@ -79,6 +79,32 @@
           "type": "link"
         }
       ]
+    },
+    {
+      "route": "comment",
+      "name": "comment",
+      "type": "sub",
+      "icon": "comment",
+      "children": [
+        {
+          "route": "index",
+          "name": "index",
+          "type": "link"
+        }
+      ]
+    },
+    {
+      "route": "reply",
+      "name": "reply",
+      "type": "sub",
+      "icon": "reply",
+      "children": [
+        {
+          "route": "index",
+          "name": "index",
+          "type": "link"
+        }
+      ]
     }
   ]
 }

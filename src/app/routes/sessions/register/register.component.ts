@@ -28,6 +28,6 @@ export class RegisterComponent implements OnInit {
     return {};
   };
   register() {
-    console.log(this.registerForm.value);
+    console.log('哈哈骗你的！');
   }
 }

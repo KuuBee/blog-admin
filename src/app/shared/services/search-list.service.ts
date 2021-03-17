@@ -42,14 +42,24 @@ export class SearchListService {
     });
     return obs$;
   }
+  update(type: SearchApiType.SearchType) {
+    this._searchApi.index(type).subscribe(({ data }) => {
+      switch (type) {
+        case SearchType.TAG:
+          this.tagSub$.next(data);
+          break;
 
-  getData(type: SearchApiType.SearchType) {
-    switch (type) {
-      case SearchType.TAG:
-        break;
+        case SearchType.CLASSIFICATION:
+          this.classificationSub$.next(data);
+          break;
 
-      default:
-        break;
-    }
+        case SearchType.ARTICLE:
+          this.articleSub$.next(data);
+          break;
+
+        default:
+          throw new Error('未知类型');
+      }
+    });
   }
 }

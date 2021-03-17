@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
+import { SearchApiType } from '@core/api/search-api.service';
 import { TagApiService, TagStatus } from '@core/api/tag-api.service';
+import { SearchListService } from '@shared/services/search-list.service';
 
 @Component({
   selector: 'app-create-dialog',
@@ -12,7 +14,8 @@ export class CreateDialogComponent implements OnInit {
   constructor(
     private _formBuilder: FormBuilder,
     private _tagApi: TagApiService,
-    private _matDialogRef: MatDialogRef<CreateDialogComponent>
+    private _matDialogRef: MatDialogRef<CreateDialogComponent>,
+    private _searchList: SearchListService
   ) {}
   tagForm = this._formBuilder.group({
     name: ['', [Validators.required]],
@@ -30,6 +33,7 @@ export class CreateDialogComponent implements OnInit {
       })
       .subscribe(res => {
         console.log(res);
+        this._searchList.update(SearchApiType.SearchType.TAG);
         this._matDialogRef.close();
       });
   }

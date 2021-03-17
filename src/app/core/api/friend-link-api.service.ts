@@ -20,6 +20,7 @@ export namespace FriendLinkApiType {
       link?: string;
       avatarLink?: string;
       status?: FriendLinkStatus;
+      oldStatus?: FriendLinkStatus;
     }
   }
   export namespace Response {

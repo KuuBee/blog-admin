@@ -5,6 +5,8 @@ import {
   ClassificationApiService,
   ClassificationStatus,
 } from '@core/api/classification-api.service';
+import { SearchApiType } from '@core/api/search-api.service';
+import { SearchListService } from '@shared/services/search-list.service';
 
 @Component({
   selector: 'app-create-dialog',
@@ -15,7 +17,8 @@ export class CreateDialogComponent implements OnInit {
   constructor(
     private _formBuilder: FormBuilder,
     private _classificationApi: ClassificationApiService,
-    private _matDialogRef: MatDialogRef<CreateDialogComponent>
+    private _matDialogRef: MatDialogRef<CreateDialogComponent>,
+    private _searchList: SearchListService
   ) {}
   classificationForm = this._formBuilder.group({
     name: ['', [Validators.required]],
@@ -31,6 +34,7 @@ export class CreateDialogComponent implements OnInit {
         status: formValue.status ? ClassificationStatus.ENABLE : ClassificationStatus.DISABLE,
       })
       .subscribe(() => {
+        this._searchList.update(SearchApiType.SearchType.CLASSIFICATION);
         this._matDialogRef.close();
       });
   }

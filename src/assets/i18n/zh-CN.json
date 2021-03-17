@@ -85,7 +85,11 @@
     "classification.index": "分类列表",
     "classification.create": "新建分类",
     "friend-link": "友链",
-    "friend-link.index": "友链列表"
+    "friend-link.index": "友链列表",
+    "comment": "评论",
+    "comment.index": "评论列表",
+    "reply": "回复",
+    "reply.index": "回复列表"
   },
   "validations": {
     "required": "该字段必填",

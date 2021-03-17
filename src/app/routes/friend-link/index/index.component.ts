@@ -49,10 +49,11 @@ export class FriendLinkIndexComponent implements OnInit {
       page: e.pageIndex,
     });
   }
-  approved({ linkId }: FriendLinkApiType.Response.IndexData) {
+  approved({ linkId, status }: FriendLinkApiType.Response.IndexData) {
     this._friendLinkApi
       .updatePart({
         linkId,
+        oldStatus: status as FriendLinkApiType.FriendLinkStatus,
         status: FriendLinkApiType.FriendLinkStatus.ENABLE,
       })
       .subscribe({
@@ -61,7 +62,10 @@ export class FriendLinkIndexComponent implements OnInit {
         },
       });
   }
-  slideChange({ checked }: MatSlideToggleChange, { linkId }: FriendLinkApiType.Response.IndexData) {
+  slideChange(
+    { checked }: MatSlideToggleChange,
+    { linkId, status }: FriendLinkApiType.Response.IndexData
+  ) {
     this._friendLinkApi
       .updatePart({
         linkId,
