@@ -6,11 +6,11 @@
 
 - [blog前台](https://github.com/KuuBee/blog)
 
-  基于 [Angular](https://github.com/angular/angular) 和 [Material](https://github.com/angular/material) 开发的博客系统后台
+  基于 [Angular](https://github.com/angular/angular) 和 [Material](https://github.com/angular/material) 开发的博客系统后台。
 
 - [blog后端](https://github.com/KuuBee/blog-backend)
 
-  基于 [Nestjs](https://github.com/nestjs/nest) 和 [Postgres](https://github.com/postgres/postgres) 开发的博客后端
+  基于 [Nestjs](https://github.com/nestjs/nest) 和 [Postgres](https://github.com/postgres/postgres) 开发的博客后端。
 
 ## 环境
 
@@ -20,21 +20,21 @@
 
 - **npm**
 
-  检查您是否安装了npm客户端，请在终端允许 `npm -v`
+  检查您是否安装了npm客户端，请在终端允许 `npm -v`。
 
 - **Angular**
 
-  您可以参考[这里](https://angular.cn/guide/setup-local#install-the-angular-cli)来安装Angualr
+  您可以参考[这里](https://angular.cn/guide/setup-local#install-the-angular-cli)来安装Angualr。
 
 ## 使用
 
-进入目录 `npm i`
+进入目录 `npm i`。
 
-您可以通过 `npm run hmr`开始本地预览
+您可以通过 `npm run hmr`开始本地预览。
 
-您可以通过修改根目录的 `deploy.sh` 来管理您的上传方式
+您可以通过修改根目录的 `deploy.sh` 来管理您的上传方式。
 
-您可以通过 `npm run deploy` 部署
+您可以通过 `npm run deploy` 部署。
 
 # 异常
 
