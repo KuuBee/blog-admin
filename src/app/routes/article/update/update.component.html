@@ -37,6 +37,13 @@
           <mat-icon matSuffix>folder</mat-icon>
         </mat-form-field>
       </p>
+      <p>
+        <mat-form-field>
+          <mat-label>简介</mat-label>
+          <textarea required matInput cdkFocusInitial formControlName="introduction"></textarea>
+          <mat-error>此项必填</mat-error>
+        </mat-form-field>
+      </p>
     </form>
   </mat-card-content>
   <mat-card-actions>

@@ -19,6 +19,7 @@ export namespace ArticleApiType {
       classificationId: number[];
       tagId: number[];
       file: File;
+      introduction: string,
     }
     export interface Updata {
       title: string;
@@ -62,6 +63,7 @@ export namespace ArticleApiType {
       createdAt: string;
       updatedAt: string;
       deleteAt?: any;
+      introduction?:string
     }
   }
 }

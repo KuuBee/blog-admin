@@ -18,11 +18,12 @@ export class ArticleCreateComponent implements OnInit, OnDestroy {
     private _router: Router,
     private _articleApi: ArticleApiService,
     private _searchList: SearchListService
-  ) {}
+  ) { }
 
   articleForm = this._fb.group({
     file: [null],
     title: [''],
+    introduction: [''],
     classificationId: [],
     tagId: [[]],
   });
@@ -47,7 +48,6 @@ export class ArticleCreateComponent implements OnInit, OnDestroy {
     });
   }
   submit() {
-    console.log(this.articleForm.value);
     const formValue = this.articleForm.value;
     this._articleApi
       .create({

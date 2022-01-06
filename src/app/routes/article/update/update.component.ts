@@ -18,13 +18,14 @@ export class ArticleUpdateComponent implements OnInit, OnDestroy {
     private _formBuilder: FormBuilder,
     private _searchList: SearchListService,
     private _router: Router
-  ) {}
+  ) { }
   articleId: number;
   articleForm = this._formBuilder.group({
     file: [null],
     title: [''],
     classificationId: [],
     tagId: [[]],
+    introduction: ['']
   });
   tagIndex: SearchApiType.Response.IndexData[] = [];
   classificationIndex: SearchApiType.Response.IndexData[] = [];
@@ -43,12 +44,13 @@ export class ArticleUpdateComponent implements OnInit, OnDestroy {
   requestArticleInfo() {
     this._articleApi.info(this.articleId).subscribe(res => {
       console.log(res);
-      const { title, tagId, classificationId } = res.data;
+      const { title, tagId, classificationId, introduction } = res.data;
       this.articleForm.setValue({
         title,
         tagId,
         classificationId,
         file: null,
+        introduction: introduction ?? ''
       });
     });
   }
@@ -63,7 +65,6 @@ export class ArticleUpdateComponent implements OnInit, OnDestroy {
     });
   }
   submit() {
-    console.log(this.articleForm.value);
     const submitData: ArticleApiType.Parameter.Updata = {
       ...this.articleForm.value,
       id: this.articleId,
